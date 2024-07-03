@@ -1,13 +1,10 @@
-//package com.example.employee_analytics;
-//
-//import org.junit.jupiter.api.Test;
-//import org.springframework.boot.test.context.SpringBootTest;
-//
-//@SpringBootTest
-//class EmployeeAnalyticsApplicationTests {
-//
-//	@Test
-//	void contextLoads() {
-//	}
-//
-//}
+package com.example.employee_analytics;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class EmployeeAnalyticsApplicationTests {
+
+
+
+}

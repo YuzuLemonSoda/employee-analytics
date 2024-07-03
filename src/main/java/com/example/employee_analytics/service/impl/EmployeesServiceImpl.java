@@ -23,7 +23,7 @@ public class EmployeesServiceImpl implements EmployeesService {
 
         Optional<List<Employees>> optionalEmployeesList = repository.findAllByFirstName(firstName);
 
-        if(optionalEmployeesList.isEmpty()) {
+        if(optionalEmployeesList.isEmpty() || optionalEmployeesList.get().isEmpty()) {
             throw new RuntimeException("There are no Employee's by the name of " + firstName + " at our company");
         }
 
