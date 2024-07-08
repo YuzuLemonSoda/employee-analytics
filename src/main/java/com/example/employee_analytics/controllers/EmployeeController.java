@@ -1,5 +1,6 @@
 package com.example.employee_analytics.controllers;
 
+import com.example.employee_analytics.dtos.response.CompanySalaryResponseDTO;
 import com.example.employee_analytics.dtos.response.EmployeesResponseDTO;
 import com.example.employee_analytics.service.EmployeesService;
 import jakarta.validation.Valid;
@@ -23,6 +24,11 @@ public class EmployeeController {
     @GetMapping("/employeesWithFirstName")
     public List<EmployeesResponseDTO> getEmployeesWithFirstName(@NotNull @Valid String firstName) {
         return service.getEmployeesWithFirstName(firstName);
+    }
+
+    @GetMapping("/companyAverageSalary")
+    public CompanySalaryResponseDTO getCompanyAverageSalary() {
+        return service.getCompanyAverageSalary();
     }
 
 }
