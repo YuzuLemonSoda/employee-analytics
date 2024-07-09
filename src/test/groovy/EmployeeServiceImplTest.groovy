@@ -47,6 +47,19 @@ class EmployeeServiceImplTest extends Specification {
         thrown(RuntimeException)
     }
 
+    def "getCompanyAverageSalary returns correct average salary"() {
 
+        given:
+        employeeRepository.findAverageSalary() >> averageSalary
+
+        when:
+        def result = employeesService.getCompanyAverageSalary()
+
+        then:
+        result.getSalary() == averageSalary
+
+        where:
+        averageSalary << new BigDecimal("50000.00")
+    }
 
 }

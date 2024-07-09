@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="groovy.EmployeeServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-03T18:26:51" hostname="Amados-MBP.ht.home" time="0.059">
+<testsuite name="groovy.EmployeeServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-09T14:12:09" hostname="Amados-MBP.ht.home" time="0.032">
   <properties/>
-  <testcase name="Test getEmployeesWithFirstName method with existing employees" classname="groovy.EmployeeServiceImplTest" time="0.059"/>
+  <testcase name="getCompanyAverageSalary returns correct average salary [averageSalary: 50000.00, #0]" classname="groovy.EmployeeServiceImplTest" time="0.032"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
