@@ -1,6 +1,7 @@
 package com.example.employee_analytics.controllers;
 
 import com.example.employee_analytics.dtos.response.CompanySalaryResponseDTO;
+import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO;
 import com.example.employee_analytics.dtos.response.EmployeesResponseDTO;
 import com.example.employee_analytics.service.EmployeesService;
 import jakarta.validation.Valid;
@@ -29,6 +30,11 @@ public class EmployeeController {
     @GetMapping("/companyAverageSalary")
     public CompanySalaryResponseDTO getCompanyAverageSalary() {
         return service.getCompanyAverageSalary();
+    }
+
+    @GetMapping("/departmentAverageSalary")
+    public List<DepartmentAvgSalaryResponseDTO> getDepartmentAverageSalary() {
+        return service.getDepartmentAverageSalary();
     }
 
 }

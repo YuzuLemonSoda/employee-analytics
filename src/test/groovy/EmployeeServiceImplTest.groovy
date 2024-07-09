@@ -1,5 +1,6 @@
 package groovy
 
+import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO
 import com.example.employee_analytics.models.entities.Employees
 import com.example.employee_analytics.repository.EmployeeRepository
 import com.example.employee_analytics.service.impl.EmployeesServiceImpl
@@ -61,5 +62,31 @@ class EmployeeServiceImplTest extends Specification {
         where:
         averageSalary << new BigDecimal("50000.00")
     }
+
+    def "getDepartmentAverageSalary returns successful average salary for each department" () {
+        given:
+        List<DepartmentAvgSalaryResponseDTO> expectedSalaries = [
+                new DepartmentAvgSalaryResponseDTO("JOB001", new BigDecimal("5000.00")),
+                new DepartmentAvgSalaryResponseDTO("JOB002", new BigDecimal("6000.00"))
+        ]
+
+        def repository = Mock(EmployeeRepository) {
+            findDepartmentAverageSalaries() >> expectedSalaries
+        }
+
+        EmployeesServiceImpl employeesService = new EmployeesServiceImpl(repository)
+
+        when:
+        List<DepartmentAvgSalaryResponseDTO> actualSalaries = employeesService.getDepartmentAverageSalary()
+
+        then:
+        actualSalaries.size() == 2
+        actualSalaries[0].jobId == "JOB001"
+        actualSalaries[0].averageSalary == new BigDecimal("5000.00")
+        actualSalaries[1].jobId == "JOB002"
+        actualSalaries[1].averageSalary == new BigDecimal("6000.00")
+
+        }
+
 
 }
