@@ -1,5 +1,6 @@
 package com.example.employee_analytics.models.entities;
 
+import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,14 @@ import java.util.Date;
 @Getter
 @Setter
 @Table(name = "employees", schema = "company_roster")
+@NamedNativeQuery(name = "Employees.findDepartmentAverageSalaries",
+                  query = "SELECT e.job_id AS jobId, ROUND(AVG(e.salary), 2) AS averageSalary FROM employees e GROUP BY e.job_id",
+                  resultSetMapping = "Mapping.DepartmentAvgSalaryResponseDTO")
+@SqlResultSetMapping(name = "Mapping.DepartmentAvgSalaryResponseDTO",
+                     classes = @ConstructorResult(targetClass = DepartmentAvgSalaryResponseDTO.class,
+                                                   columns = { @ColumnResult(name = "jobId"),
+                                                                @ColumnResult(name = "averageSalary")
+                                                   }))
 public class Employees {
 
     @Id

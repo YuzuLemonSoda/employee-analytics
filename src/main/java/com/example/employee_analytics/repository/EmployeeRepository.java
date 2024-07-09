@@ -1,5 +1,6 @@
 package com.example.employee_analytics.repository;
 
+import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO;
 import com.example.employee_analytics.models.entities.Employees;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +17,8 @@ public interface EmployeeRepository extends JpaRepository<Employees, Long> {
 
     @Query(value = "SELECT ROUND(AVG(salary), 2) AS average_salary FROM employees", nativeQuery = true)
     BigDecimal findAverageSalary();
+
+    @Query(nativeQuery = true)
+    List<DepartmentAvgSalaryResponseDTO> findDepartmentAverageSalaries();
+
 }
