@@ -66,4 +66,11 @@ public class EmployeesServiceImpl implements EmployeesService {
     }
 
 
+    @Override
+    public MostCommonFirstNameDTO getMostCommonFirstName(){
+
+        return repository.getMostCommonFirstName();
+    }
+
+
 }

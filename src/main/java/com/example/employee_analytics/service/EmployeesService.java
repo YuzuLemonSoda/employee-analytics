@@ -14,4 +14,6 @@ public interface EmployeesService {
     CompanySalaryResponseDTO getCompanyAverageSalary();
 
     List<DepartmentAvgSalaryResponseDTO> getDepartmentAverageSalary();
+
+    MostCommonFirstNameDTO getMostCommonFirstName();
 }

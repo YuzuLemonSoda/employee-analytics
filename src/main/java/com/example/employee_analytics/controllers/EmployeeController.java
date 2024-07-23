@@ -37,4 +37,9 @@ public class EmployeeController {
         return service.getDepartmentAverageSalary();
     }
 
+    @GetMapping("/mostCommonFirstName")
+    public MostCommonFirstNameDTO getMostCommonFirstName() {
+        return service.getMostCommonFirstName();
+    }
+
 }
