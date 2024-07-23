@@ -2,6 +2,7 @@ package com.example.employee_analytics.service.impl;
 
 import com.example.employee_analytics.dtos.response.CompanySalaryResponseDTO;
 import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO;
+import com.example.employee_analytics.dtos.response.EmployeesByDeptResponseDTO;
 import com.example.employee_analytics.dtos.response.EmployeesResponseDTO;
 import com.example.employee_analytics.models.entities.Employees;
 import com.example.employee_analytics.repository.EmployeeRepository;
@@ -62,6 +63,13 @@ public class EmployeesServiceImpl implements EmployeesService {
     public List<DepartmentAvgSalaryResponseDTO> getDepartmentAverageSalary() {
 
         return repository.findDepartmentAverageSalaries();
+
+    }
+
+    @Override
+    public List<EmployeesByDeptResponseDTO> getEmployeesByDepartment() {
+
+        return repository.findEmployeesByDepartment();
 
     }
 
