@@ -1,6 +1,7 @@
 package groovy
 
 import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO
+import com.example.employee_analytics.dtos.response.EmployeesByDeptResponseDTO
 import com.example.employee_analytics.models.entities.Employees
 import com.example.employee_analytics.repository.EmployeeRepository
 import com.example.employee_analytics.service.impl.EmployeesServiceImpl
@@ -88,5 +89,28 @@ class EmployeeServiceImplTest extends Specification {
 
         }
 
+        def "getEmployeesByDepartment returns successful headcount of each department " () {
+            given:
+            def employeesByDeptResponseDTO1 = Mock(EmployeesByDeptResponseDTO) {
+                getJobId() >> "DEV"
+                getTotal() >> 10L
+            }
+            def employeesByDeptResponseDTO2 = Mock(EmployeesByDeptResponseDTO) {
+                getJobId() >> "HR"
+                getTotal() >> 5L
+            }
+            def employeesByDeptList = [employeesByDeptResponseDTO1, employeesByDeptResponseDTO2]
+            employeeRepository.findEmployeesByDepartment() >> employeesByDeptList
+
+            when:
+            def result = employeesService.getEmployeesByDepartment()
+
+            then:
+            result.size() == 2
+            result[0].jobId == "DEV"
+            result[0].total == 10L
+            result[1].jobId == "HR"
+            result[1].total == 5L
+        }
 
 }
