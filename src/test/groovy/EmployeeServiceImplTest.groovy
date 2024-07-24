@@ -1,5 +1,6 @@
 package groovy
 
+import com.example.employee_analytics.dtos.response.DepartmentAnnualPayrollResponseDTO
 import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO
 import com.example.employee_analytics.dtos.response.EmployeesByDeptResponseDTO
 import com.example.employee_analytics.models.entities.Employees
@@ -111,6 +112,30 @@ class EmployeeServiceImplTest extends Specification {
             result[0].total == 10L
             result[1].jobId == "HR"
             result[1].total == 5L
+        }
+
+        def "getDepartmentAnnualPayroll returns successful payroll for each department " () {
+            given:
+            def departmentAnnualPayrollResponseDTO1 = Mock(DepartmentAnnualPayrollResponseDTO) {
+                getJobId() >> "Dev"
+                getAnnualPayroll() >> 10L
+
+            }
+            def departmentAnnualPayrollResponseDTO2 = Mock(DepartmentAnnualPayrollResponseDTO) {
+                getJobId() >> "HR"
+                getAnnualPayroll() >> 20L
+            }
+            def departmentAnnualPayrollList = [departmentAnnualPayrollResponseDTO1, departmentAnnualPayrollResponseDTO2]
+            employeeRepository.findDepartmentAnnualSalaries() >> departmentAnnualPayrollList
+
+            when:
+            def result = employeesService.getDepartmentAnnualPayroll()
+            then:
+            result.size() == 2
+            result[0].jobId == "Dev"
+            result[0].annualPayroll == 10L
+            result[1].jobId == "HR"
+            result[1].annualPayroll == 20L
         }
 
 }

@@ -1,5 +1,6 @@
 package com.example.employee_analytics.repository;
 
+import com.example.employee_analytics.dtos.response.DepartmentAnnualPayrollResponseDTO;
 import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO;
 import com.example.employee_analytics.dtos.response.EmployeesByDeptResponseDTO;
 import com.example.employee_analytics.models.entities.Employees;
@@ -24,4 +25,7 @@ public interface EmployeeRepository extends JpaRepository<Employees, Long> {
 
     @Query(value = "SELECT job_id, COUNT(*) AS total FROM employees  GROUP BY job_id ORDER BY job_id", nativeQuery = true)
     List<EmployeesByDeptResponseDTO> findEmployeesByDepartment();
+
+    @Query(value = "SELECT job_id, SUM(salary) as annual_payroll FROM employees GROUP BY job_id ORDER BY job_id", nativeQuery = true)
+    List<DepartmentAnnualPayrollResponseDTO> findDepartmentAnnualSalaries();
 }
