@@ -45,4 +45,9 @@ public class EmployeeController {
         return service.getDepartmentAnnualPayroll();
     }
 
+    @GetMapping("/medianSalaryByDepartment")
+    public List<MedianSalaryByDeptResponseDTO> getMedianSalaryByDepartment() {
+        return service.getMedianSalaryByDepartment();
+    }
+
 }

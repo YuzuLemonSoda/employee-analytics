@@ -77,5 +77,10 @@ public class EmployeesServiceImpl implements EmployeesService {
 
     }
 
+    @Override
+    public List<MedianSalaryByDeptResponseDTO> getMedianSalaryByDepartment() {
+        return repository.findMedianSalaryByDepartment();
+    }
+
 
 }

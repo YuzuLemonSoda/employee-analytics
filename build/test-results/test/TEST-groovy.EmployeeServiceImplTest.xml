@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="groovy.EmployeeServiceImplTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2024-07-24T19:22:52" hostname="Amados-MBP.ht.home" time="0.148">
+<testsuite name="groovy.EmployeeServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-25T18:03:51" hostname="Amados-MBP.ht.home" time="0.063">
   <properties/>
-  <testcase name="Test getEmployeesWithFirstName method with existing employees" classname="groovy.EmployeeServiceImplTest" time="0.068"/>
-  <testcase name="Test getEmployeesWithFirstName method with non-existing employees" classname="groovy.EmployeeServiceImplTest" time="0.01"/>
-  <testcase name="getCompanyAverageSalary returns correct average salary [averageSalary: 50000.00, #0]" classname="groovy.EmployeeServiceImplTest" time="0.002"/>
-  <testcase name="getDepartmentAverageSalary returns successful average salary for each department" classname="groovy.EmployeeServiceImplTest" time="0.012"/>
-  <testcase name="getEmployeesByDepartment returns successful headcount of each department " classname="groovy.EmployeeServiceImplTest" time="0.006"/>
-  <testcase name="getDepartmentAnnualPayroll returns successful payroll for each department " classname="groovy.EmployeeServiceImplTest" time="0.007"/>
+  <testcase name="getMedianSalaryByDepartment returns successfully and gets the median salary of each department " classname="groovy.EmployeeServiceImplTest" time="0.063"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
