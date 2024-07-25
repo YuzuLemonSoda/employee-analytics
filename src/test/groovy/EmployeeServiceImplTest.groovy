@@ -3,6 +3,7 @@ package groovy
 import com.example.employee_analytics.dtos.response.DepartmentAnnualPayrollResponseDTO
 import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO
 import com.example.employee_analytics.dtos.response.EmployeesByDeptResponseDTO
+import com.example.employee_analytics.dtos.response.MedianSalaryByDeptResponseDTO
 import com.example.employee_analytics.models.entities.Employees
 import com.example.employee_analytics.repository.EmployeeRepository
 import com.example.employee_analytics.service.impl.EmployeesServiceImpl
@@ -138,4 +139,27 @@ class EmployeeServiceImplTest extends Specification {
             result[1].annualPayroll == 20L
         }
 
+        def "getMedianSalaryByDepartment returns successfully and gets the median salary of each department " () {
+            given:
+            def medianSalaryByDeptResponseDTO1 = Mock(MedianSalaryByDeptResponseDTO) {
+                getJobId() >> "Dev"
+                getMedianSalary() >> 10L
+            }
+            def medianSalaryByDeptResponseDTO2 = Mock(MedianSalaryByDeptResponseDTO) {
+                getJobId() >> "HR"
+                getMedianSalary() >> 20L
+            }
+
+            def medianSalaryList = [medianSalaryByDeptResponseDTO1, medianSalaryByDeptResponseDTO2]
+            employeeRepository.findMedianSalaryByDepartment() >> medianSalaryList
+
+            when:
+            def result = employeesService.getMedianSalaryByDepartment()
+            then:
+            result.size() == 2
+            result[0].jobId == "Dev"
+            result[0].medianSalary == 10L
+            result[1].jobId == "HR"
+            result[1].medianSalary == 20L
+        }
 }

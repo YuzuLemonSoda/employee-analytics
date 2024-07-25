@@ -17,4 +17,5 @@ public interface EmployeesService {
 
     List<DepartmentAnnualPayrollResponseDTO> getDepartmentAnnualPayroll();
 
+    List<MedianSalaryByDeptResponseDTO> getMedianSalaryByDepartment();
 }
