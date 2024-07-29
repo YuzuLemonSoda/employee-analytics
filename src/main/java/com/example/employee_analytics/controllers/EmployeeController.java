@@ -50,4 +50,9 @@ public class EmployeeController {
         return service.getMedianSalaryByDepartment();
     }
 
+    @GetMapping("/firstEmployeesToJoin")
+    public List<FirstEmployeesToJoinResponseDTO> getFirstEmployeesToJoin() {
+        return service.getFirstEmployeesToJoin();
+    }
+
 }

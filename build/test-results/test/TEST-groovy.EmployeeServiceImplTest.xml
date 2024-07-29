@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="groovy.EmployeeServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-07-25T18:03:51" hostname="Amados-MBP.ht.home" time="0.063">
+<testsuite name="groovy.EmployeeServiceImplTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2024-07-29T21:31:24" hostname="Amados-MBP.ht.home" time="0.17">
   <properties/>
-  <testcase name="getMedianSalaryByDepartment returns successfully and gets the median salary of each department " classname="groovy.EmployeeServiceImplTest" time="0.063"/>
+  <testcase name="Test getEmployeesWithFirstName method with existing employees" classname="groovy.EmployeeServiceImplTest" time="0.079"/>
+  <testcase name="Test getEmployeesWithFirstName method with non-existing employees" classname="groovy.EmployeeServiceImplTest" time="0.006"/>
+  <testcase name="getCompanyAverageSalary returns correct average salary [averageSalary: 50000.00, #0]" classname="groovy.EmployeeServiceImplTest" time="0.002"/>
+  <testcase name="getDepartmentAverageSalary returns successful average salary for each department" classname="groovy.EmployeeServiceImplTest" time="0.013"/>
+  <testcase name="getEmployeesByDepartment returns successful headcount of each department " classname="groovy.EmployeeServiceImplTest" time="0.007"/>
+  <testcase name="getDepartmentAnnualPayroll returns successful payroll for each department " classname="groovy.EmployeeServiceImplTest" time="0.005"/>
+  <testcase name="getMedianSalaryByDepartment returns successfully and gets the median salary of each department " classname="groovy.EmployeeServiceImplTest" time="0.005"/>
+  <testcase name="getFirstEmployeesToJoin returns successfully and gets the first employees to join the company " classname="groovy.EmployeeServiceImplTest" time="0.015"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
