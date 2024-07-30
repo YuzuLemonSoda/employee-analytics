@@ -1,18 +1,12 @@
 package com.example.employee_analytics.dtos.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.math.BigDecimal;
 
-@Getter
-@Setter
-@AllArgsConstructor
-public class DepartmentAvgSalaryResponseDTO {
 
-    private String jobId;
+public interface DepartmentAvgSalaryResponseDTO {
 
-    private BigDecimal averageSalary;
+    String getJobId();
+
+    BigDecimal getAverageSalary();
 
 }

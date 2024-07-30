@@ -72,10 +72,15 @@ class EmployeeServiceImplTest extends Specification {
 
     def "getDepartmentAverageSalary returns successful average salary for each department" () {
         given:
-        List<DepartmentAvgSalaryResponseDTO> expectedSalaries = [
-                new DepartmentAvgSalaryResponseDTO("JOB001", new BigDecimal("5000.00")),
-                new DepartmentAvgSalaryResponseDTO("JOB002", new BigDecimal("6000.00"))
-        ]
+        def departmentAvgSalaryResponseDTO1 = Mock(DepartmentAvgSalaryResponseDTO) {
+            getJobId() >> "Dev"
+            getAverageSalary() >> 50000.00
+        }
+        def departmentAvgSalaryResponseDTO2 = Mock(DepartmentAvgSalaryResponseDTO) {
+            getJobId() >> "HR"
+            getAverageSalary() >> 60000.00
+        }
+        List<DepartmentAvgSalaryResponseDTO> expectedSalaries = [departmentAvgSalaryResponseDTO1, departmentAvgSalaryResponseDTO2]
 
         def repository = Mock(EmployeeRepository) {
             findDepartmentAverageSalaries() >> expectedSalaries
@@ -88,10 +93,10 @@ class EmployeeServiceImplTest extends Specification {
 
         then:
         actualSalaries.size() == 2
-        actualSalaries[0].jobId == "JOB001"
-        actualSalaries[0].averageSalary == new BigDecimal("5000.00")
-        actualSalaries[1].jobId == "JOB002"
-        actualSalaries[1].averageSalary == new BigDecimal("6000.00")
+        actualSalaries[0].jobId == "Dev"
+        actualSalaries[0].averageSalary == 50000.00
+        actualSalaries[1].jobId == "HR"
+        actualSalaries[1].averageSalary == 60000.00
 
         }
 

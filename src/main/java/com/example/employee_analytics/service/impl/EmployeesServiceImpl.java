@@ -37,20 +37,6 @@ public class EmployeesServiceImpl implements EmployeesService {
     @Override
     public CompanySalaryResponseDTO getCompanyAverageSalary() {
 
-//  Option 1: response time 7~8 seconds in postman
-
-//        List<Employees> employees = repository.findAll();
-//
-//        BigDecimal sum = BigDecimal.ZERO;
-//
-//        for (Employees employee: employees) {
-//            sum = sum.add(employee.getSalary());
-//        }
-//
-//        BigDecimal average = sum.divide(BigDecimal.valueOf(employees.size()), 2, RoundingMode.HALF_UP);
-
-// Option 2: response time 980 milliseconds in postman
-
         BigDecimal average = repository.findAverageSalary();
 
         return new CompanySalaryResponseDTO(average);

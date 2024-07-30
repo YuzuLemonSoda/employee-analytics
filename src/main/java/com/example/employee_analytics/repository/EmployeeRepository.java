@@ -18,7 +18,7 @@ public interface EmployeeRepository extends JpaRepository<Employees, Long> {
     @Query(value = "SELECT ROUND(AVG(salary), 2) AS average_salary FROM employees", nativeQuery = true)
     BigDecimal findAverageSalary();
 
-    @Query(nativeQuery = true)
+    @Query(value = "SELECT e.job_id AS jobId, ROUND(AVG(e.salary), 2) AS averageSalary FROM employees e GROUP BY e.job_id", nativeQuery = true)
     List<DepartmentAvgSalaryResponseDTO> findDepartmentAverageSalaries();
 
     @Query(value = "SELECT job_id, COUNT(*) AS total FROM employees  GROUP BY job_id ORDER BY job_id", nativeQuery = true)
