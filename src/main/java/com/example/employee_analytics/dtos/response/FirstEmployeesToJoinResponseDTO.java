@@ -1,8 +1,7 @@
 package com.example.employee_analytics.dtos.response;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 
 public interface FirstEmployeesToJoinResponseDTO {
 
@@ -16,7 +15,7 @@ public interface FirstEmployeesToJoinResponseDTO {
 
     String getPhoneNumber();
 
-    OffsetDateTime getHireDate();
+    LocalDateTime getHireDate();
 
     String getJobId();
 

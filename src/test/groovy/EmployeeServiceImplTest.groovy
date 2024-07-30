@@ -12,8 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 @SpringBootTest
@@ -178,7 +176,7 @@ class EmployeeServiceImplTest extends Specification {
                 getLastName() >> "Smith"
                 getEmail() >> "jsmith01@email.com"
                 getPhoneNumber() >> "123456790"
-                getHireDate() >> OffsetDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+                getHireDate() >> LocalDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME)
                 getJobId() >> "Dev"
                 getSalary() >> 75000.00
                 getDepartmentId() >> 10
@@ -189,7 +187,7 @@ class EmployeeServiceImplTest extends Specification {
                 getLastName() >> "Doe"
                 getEmail() >> "jdoe03@email.com"
                 getPhoneNumber() >> "1234447895"
-                getHireDate() >> OffsetDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+                getHireDate() >> LocalDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME)
                 getJobId() >> "HR"
                 getSalary() >> 85000.00
                 getDepartmentId() >> 3
@@ -207,7 +205,7 @@ class EmployeeServiceImplTest extends Specification {
             result[0].getLastName() == "Smith"
             result[0].getEmail() == "jsmith01@email.com"
             result[0].getPhoneNumber() == "123456790"
-            result[0].getHireDate().isEqual(OffsetDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+            result[0].getHireDate().isEqual(LocalDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME))
             result[0].getJobId() == "Dev"
             result[0].getSalary() == 75000.00
             result[0].getDepartmentId() == 10
@@ -217,7 +215,7 @@ class EmployeeServiceImplTest extends Specification {
             result[1].getLastName() == "Doe"
             result[1].getEmail() == "jdoe03@email.com"
             result[1].getPhoneNumber() == "1234447895"
-            result[1].getHireDate().isEqual(OffsetDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+            result[1].getHireDate().isEqual(LocalDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME))
             result[1].getJobId() == "HR"
             result[1].getSalary() == 85000.00
             result[1].getDepartmentId() == 3

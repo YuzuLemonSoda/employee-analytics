@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -40,7 +40,7 @@ public class Employees {
     private String phoneNumber;
 
     @Column(name = "hire_date")
-    private OffsetDateTime hireDate;
+    private LocalDateTime hireDate;
 
     @Column(name = "job_id")
     private String jobId;
