@@ -1,9 +1,6 @@
 package com.example.employee_analytics.repository;
 
-import com.example.employee_analytics.dtos.response.DepartmentAnnualPayrollResponseDTO;
-import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO;
-import com.example.employee_analytics.dtos.response.EmployeesByDeptResponseDTO;
-import com.example.employee_analytics.dtos.response.MedianSalaryByDeptResponseDTO;
+import com.example.employee_analytics.dtos.response.*;
 import com.example.employee_analytics.models.entities.Employees;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -35,4 +32,7 @@ public interface EmployeeRepository extends JpaRepository<Employees, Long> {
             "SELECT job_id, AVG(salary) AS median_salary FROM RankedSalaries WHERE row_num IN " +
             "(FLOOR((total_count + 1) / 2.0), CEIL((total_count + 1) / 2.0)) GROUP BY job_id ORDER BY job_id ", nativeQuery = true)
     List<MedianSalaryByDeptResponseDTO> findMedianSalaryByDepartment();
+
+    @Query(value = "SELECT * FROM employees WHERE hire_date = (SELECT MIN(hire_date) FROM employees)", nativeQuery = true)
+    List<FirstEmployeesToJoinResponseDTO> findFirstEmployeesToJoin();
 }

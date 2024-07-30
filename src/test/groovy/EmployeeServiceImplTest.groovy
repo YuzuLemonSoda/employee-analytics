@@ -3,12 +3,16 @@ package groovy
 import com.example.employee_analytics.dtos.response.DepartmentAnnualPayrollResponseDTO
 import com.example.employee_analytics.dtos.response.DepartmentAvgSalaryResponseDTO
 import com.example.employee_analytics.dtos.response.EmployeesByDeptResponseDTO
+import com.example.employee_analytics.dtos.response.FirstEmployeesToJoinResponseDTO
 import com.example.employee_analytics.dtos.response.MedianSalaryByDeptResponseDTO
 import com.example.employee_analytics.models.entities.Employees
 import com.example.employee_analytics.repository.EmployeeRepository
 import com.example.employee_analytics.service.impl.EmployeesServiceImpl
 import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
+
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @SpringBootTest
 class EmployeeServiceImplTest extends Specification {
@@ -161,5 +165,59 @@ class EmployeeServiceImplTest extends Specification {
             result[0].medianSalary == 10L
             result[1].jobId == "HR"
             result[1].medianSalary == 20L
+        }
+
+        def "getFirstEmployeesToJoin returns successfully and gets the first employees to join the company " () {
+
+            given:
+            def firstEmployeesToJoinResponseDTO1 = Mock(FirstEmployeesToJoinResponseDTO) {
+                getEmployeeId() >> 1234
+                getFirstName() >> "John"
+                getLastName() >> "Smith"
+                getEmail() >> "jsmith01@email.com"
+                getPhoneNumber() >> "123456790"
+                getHireDate() >> LocalDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+                getJobId() >> "Dev"
+                getSalary() >> 75000.00
+                getDepartmentId() >> 10
+            }
+            def firstEmployeesToJoinResponseDTO2 = Mock(FirstEmployeesToJoinResponseDTO) {
+                getEmployeeId() >> 1235
+                getFirstName() >> "Jane"
+                getLastName() >> "Doe"
+                getEmail() >> "jdoe03@email.com"
+                getPhoneNumber() >> "1234447895"
+                getHireDate() >> LocalDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME)
+                getJobId() >> "HR"
+                getSalary() >> 85000.00
+                getDepartmentId() >> 3
+            }
+            def firstEmployeesToJoinResponseDTOList = [firstEmployeesToJoinResponseDTO1, firstEmployeesToJoinResponseDTO2]
+            employeeRepository.findFirstEmployeesToJoin() >> firstEmployeesToJoinResponseDTOList
+
+            when:
+            def result = employeesService.getFirstEmployeesToJoin()
+
+            then:
+            result.size() == 2
+            result[0].getEmployeeId() == 1234
+            result[0].getFirstName() == "John"
+            result[0].getLastName() == "Smith"
+            result[0].getEmail() == "jsmith01@email.com"
+            result[0].getPhoneNumber() == "123456790"
+            result[0].getHireDate().isEqual(LocalDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+            result[0].getJobId() == "Dev"
+            result[0].getSalary() == 75000.00
+            result[0].getDepartmentId() == 10
+
+            result[1].getEmployeeId() == 1235
+            result[1].getFirstName() == "Jane"
+            result[1].getLastName() == "Doe"
+            result[1].getEmail() == "jdoe03@email.com"
+            result[1].getPhoneNumber() == "1234447895"
+            result[1].getHireDate().isEqual(LocalDateTime.parse("2014-07-01T05:00:00.000+00:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME))
+            result[1].getJobId() == "HR"
+            result[1].getSalary() == 85000.00
+            result[1].getDepartmentId() == 3
         }
 }

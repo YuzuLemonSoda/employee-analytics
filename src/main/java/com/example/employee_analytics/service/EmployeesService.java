@@ -18,4 +18,6 @@ public interface EmployeesService {
     List<DepartmentAnnualPayrollResponseDTO> getDepartmentAnnualPayroll();
 
     List<MedianSalaryByDeptResponseDTO> getMedianSalaryByDepartment();
+
+    List<FirstEmployeesToJoinResponseDTO> getFirstEmployeesToJoin();
 }
