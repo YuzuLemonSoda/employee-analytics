@@ -55,4 +55,9 @@ public class EmployeeController {
         return service.getFirstEmployeesToJoin();
     }
 
+    @GetMapping("/lastEmployeesToJoin")
+    public List<LastEmployeesToJoinResponseDTO> getLastEmployeesToJoin() {
+        return service.getLastEmployeesToJoin();
+    }
+
 }

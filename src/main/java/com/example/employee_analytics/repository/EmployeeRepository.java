@@ -35,4 +35,7 @@ public interface EmployeeRepository extends JpaRepository<Employees, Long> {
 
     @Query(value = "SELECT * FROM employees WHERE hire_date = (SELECT MIN(hire_date) FROM employees)", nativeQuery = true)
     List<FirstEmployeesToJoinResponseDTO> findFirstEmployeesToJoin();
+
+    @Query(value = "SELECT * FROM employees WHERE hire_date = (SELECT MAX(hire_date) FROM employees)", nativeQuery = true)
+    List<LastEmployeesToJoinResponseDTO> findLastEmployeesToJoin();
 }
