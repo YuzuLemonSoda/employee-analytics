@@ -73,5 +73,10 @@ public class EmployeesServiceImpl implements EmployeesService {
         return repository.findFirstEmployeesToJoin();
     }
 
+    @Override
+    public List<LastEmployeesToJoinResponseDTO> getLastEmployeesToJoin() {
+        return repository.findLastEmployeesToJoin();
+    }
+
 
 }
